@@ -12,16 +12,16 @@ namespace benchmarks
             var dir = Path.Join(root, ".bdn", "results");
             Directory.CreateDirectory(dir);
 
-            var currentBranch = Read("git.exe", "branch --show-current");
-            var lastCommitMsg = Read("git.exe", "log -1 --pretty=%B");
+            var currentBranch = Read("git.exe", "branch --show-current", noEcho: true);
+            var lastCommitMsg = Read("git.exe", "log -1 --pretty=%B", noEcho: true);
 
             var sb = new StringBuilder();
             sb.AppendLine("## Test Report");
+            sb.AppendLine();
             var filter = args.Length == 2 && args[0] == "--filter" ? args[1] : "";
             sb.AppendLine($"Filter: {filter}");
-            sb.AppendLine($"Branch: {currentBranch}");
-            sb.AppendLine($"Last commit message: {lastCommitMsg}");
-
+            sb.Append($"Branch: {currentBranch}");
+            sb.Append($"Last commit message: {lastCommitMsg[..^1]}");
 
             File.WriteAllText(Path.Join(dir, "test-report.md"), sb.ToString());
         }
