@@ -26,10 +26,9 @@ TABLE
 
             var sb = new StringBuilder();
             sb.Append(reportFile);
-            sb.AppendLine();
-            sb.AppendLine();
+            sb.Append("\n");
             var filter = args.Length == 2 && args[0] == "--filter" ? args[1] : "";
-            sb.AppendLine($"Filter: {filter}");
+            sb.Append($"Filter: {filter}\n");
             sb.Append($"Branch: {currentBranch}");
             sb.Append($"Last commit message: {lastCommitMsg[..^1]}");
 
