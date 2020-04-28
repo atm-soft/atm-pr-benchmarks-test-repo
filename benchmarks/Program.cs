@@ -8,14 +8,7 @@ namespace benchmarks
     {
         static void Main(string[] args)
         {
-            const string reportFile =
-@"``` ini
-
-HI
-
-```
-TABLE
-";
+            const string reportFile = "``` ini\n\nHI\n\n```\nTABLE\n";
 
             var root = new DirectoryInfo(Path.Join(Path.GetDirectoryName(typeof(Program).Assembly.Location), "..", "..", "..")).FullName;
             var dir = Path.Join(root, ".bdn", "results");
