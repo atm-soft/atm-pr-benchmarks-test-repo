@@ -19,7 +19,6 @@ namespace benchmarks
 
             var sb = new StringBuilder();
             sb.Append(reportFile);
-            sb.Append("\n");
             var filter = args.Length == 2 && args[0] == "--filter" ? args[1] : "";
             sb.Append($"Filter: {filter}\n");
             sb.Append($"Branch: {currentBranch}");
